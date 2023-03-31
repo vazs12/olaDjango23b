@@ -5,5 +5,6 @@ from . import views
 #ele é o controller que pega um padrão de url 
 #e envia para o usuario a view especifica
 urlpatterns = [
-    path('', views.index, nome="index"),
+    path('', views.index, name="index"),
+     path('tik', views.tik, name="tik"),
 ]
