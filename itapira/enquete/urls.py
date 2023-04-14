@@ -6,5 +6,5 @@ from . import views
 #e envia para o usuario a view especifica
 urlpatterns = [
     path('', views.index, name="index"),
-     path('tik', views.tik, name="tik"),
+    path('tik', views.tik, name="tik"),
 ]
