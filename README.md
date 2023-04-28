@@ -11,6 +11,7 @@
   pip freeze > requirements.txt // cria a lista de dependencia
   pip install > requirementes.txt // instala as dependencias
   python manage.py migrate // criar as primeiras migraçoes
+  python manage.py makemigrations
   python manage.py createsuperuser // criar usuario
   usuario: admin
   email: yasmin.sampaio4@etec.sp.gov.br
