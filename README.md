@@ -16,3 +16,4 @@
   usuario: admin
   email: yasmin.sampaio4@etec.sp.gov.br
   senha: 123mudar
+  senha do gerente e cliente: etecitapira 

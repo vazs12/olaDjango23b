@@ -1,0 +1,12 @@
+<h1> Minhas questoes</h1>
+{% if ultimas_questoes %}
+    <ul>
+    {% for questoes in ultimas_questoes %}
+        <li>
+            <a href="/enquete/{{questoes.id}}/">{{questoes.pergunta}}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{%else %}
+    <p> Não tem questoes salvas</p>
+{% endif %}

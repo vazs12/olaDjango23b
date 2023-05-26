@@ -5,8 +5,8 @@ from.models import Questao
 # Create your views here.
 def index (request):
     ultimas_questoes = Questao.objects.order_by("-data")[:5]
-    saida =", ".join([q.pergunta for q in ultimas_questoes])
-    return HttpResponse(saida)
+    context = {'ultimas_questoes': ultimas_questoes}
+    return render(request, 'enquete/index.html', context)
 
 def tik (request):
     return HttpResponse("É REAL O QUE TU SENTE?")
