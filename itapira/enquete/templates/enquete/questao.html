@@ -15,13 +15,20 @@
                 <div class="mt-4 p-5 bg-dark text-white rounded">
                 <h1> PÁGINA MAIS BONITA</h1>
                 </div>
-                <h2>{{ questao.pergunta   }}</h2>
-                <ul>
-                  {%for respostas in questao.resposta_set.all %}
-                    <li> {{ respostas.resposta }} - votos: {{ respostas.votos}}</li>
-                  {% endfor %}
-                </ul>
-                <p> Publicado em: {{ questao.data}} </p>
+                <form action="{% url 'voto' questao.id %}" method="post">
+                  {% csrf_token %}
+                  <fieldset>
+                    <legend><h1>{{ questao.pergunta}}</h1></legend>
+                    {% if error_message %}
+                      <p><strong>{{ error_message}}</strong></p>
+                    {% endif %}
+                    {%for respostas in questao.resposta_set.all %}
+                      <input type="radio" name="resposta" id="resposta{{forloop.counter}}" value="{{ resposta.id}}">
+                      <label for="resposta{{ forloop.counter}}">{{ respostas.resposta}}</label><br> <br>
+                    {% endfor %}
+                  </fieldset>
+                  <input type="submit" value="votar">
+                </form>
             </div>
         </div>
     </div>    
