@@ -24,8 +24,8 @@ def detalhe (request,questao_id):
     return render(request, 'enquete/questao.html', {'questao': questao})
 
 def resultados (request,questao_id):
-    response = "Você está olhando o resultado da questão %s"
-    return HttpResponse(response % questao_id)
+    questao = get_object_or_404(Questao, pk=questao_id)
+    return render(request, 'enquete/resultado.html', {'questao': questao})
 
 def voto (request,questao_id):
     questao = get_object_or_404(Questao, pk=questao_id)
@@ -41,6 +41,6 @@ def voto (request,questao_id):
             },
         )
     else:
-        resposta.votos == 2
+        resposta.votos += 1
         resposta.save()
-        return HttpResponseRedirect(reverse("enquete:resultados"),  args=(questao_id))
+        return HttpResponseRedirect(reverse("resultados",  args=(questao_id,)))
