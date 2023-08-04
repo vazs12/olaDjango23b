@@ -7,9 +7,9 @@ from . import views
 urlpatterns = [
     path('', views.index, name="index"),
     path('tik', views.tik, name="tik"),
-    path("<int:questao_id>/", views.detalhe, name="detalhe"),
+    path("<int:pk>/", views.DetalheView.as_view(), name="detalhe"),
      #ex: /enquete/5/
-    path("<int:questao_id>/resultados/", views.resultados, name="resultados"),
+    path("<int:pk>/resultados/", views.ResultadoView.as_view(), name="resultados"),
     #ex: /enquete/5/resultados/     
     path("<int:questao_id>/voto/", views.voto, name="voto"),
     #ex: /enquete/5/voto/

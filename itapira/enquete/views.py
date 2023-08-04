@@ -2,30 +2,24 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from.models import Questao, Resposta
+from django.views import generic
 
 
 
 # Create your views here.
-def index (request):
-    ultimas_questoes = Questao.objects.order_by("-data")#[:5]
-    context = {'ultimas_questoes': ultimas_questoes}
-    return render(request, 'enquete/index.html', context)
+class IndexView(generic.ListView):
+    model = Questao
+    template_name = 'enquete/index.html'
 
-def tik (request):
-    return HttpResponse("É REAL O QUE TU SENTE?")
 
-def detalhe (request,questao_id):
-    # try: 
-    #     questao = Questao.objects.get(pk=questao_id) # seleciona o objeto que a chave
-    #                                                  #primaria tenha o valor que colocamos na url
-    # except Questao.DoesNotExist:
-    #   raise Http404("Questao não existe")
-    questao = get_object_or_404(Questao, pk=questao_id)
-    return render(request, 'enquete/questao.html', {'questao': questao})
+class DetalheView(generic.DetailView):
+    model = Questao
+    template_name = 'enquete/questao.html'
 
-def resultados (request,questao_id):
-    questao = get_object_or_404(Questao, pk=questao_id)
-    return render(request, 'enquete/resultado.html', {'questao': questao})
+class ResultadoView(generic.DetailView):
+    model = Questao
+    template_name = 'enquete/resultado.html'
+
 
 def voto (request,questao_id):
     questao = get_object_or_404(Questao, pk=questao_id)

@@ -1,7 +1,7 @@
 <h1> Minhas questoes</h1>
-{% if ultimas_questoes %}
+{% if questao %}
     <ul>
-    {% for questoes in ultimas_questoes %}
+    {% for questoes in questao %}
         <li>
             <a href="{%url 'detalhe' questoes.id %}">
                     {{questoes.pergunta}}</a>
