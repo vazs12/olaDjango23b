@@ -1,3 +1,5 @@
+{% extends "enquete/base.html" %}
+{% block content %}
 <h1> {{ questao.pergunta }}</h1>
 
 <ul>
@@ -8,3 +10,4 @@
 </ul>
 
 <a href="{% url 'detalhe' questao.id%}"> Votar Novamente?</a>
+{% endblock %}
