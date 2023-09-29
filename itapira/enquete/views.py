@@ -11,6 +11,10 @@ class IndexView(generic.ListView):
     model = Questao
     template_name = 'enquete/index.html'
 
+class RankingView(generic.ListView):
+    model = Questao
+    template_name = 'enquete/ranking.html'
+
 
 class DetalheView(generic.DetailView):
     model = Questao

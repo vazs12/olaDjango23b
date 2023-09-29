@@ -6,6 +6,7 @@ from . import views
 #e envia para o usuario a view especifica
 urlpatterns = [
     path('', views.IndexView.as_view(), name="index"),
+    path('ranking', views.RankingView.as_view(), name="ranking"),
     path("<int:pk>/", views.DetalheView.as_view(), name="detalhe"),
      #ex: /enquete/5/
     path("<int:pk>/resultados/", views.ResultadoView.as_view(), name="resultados"),

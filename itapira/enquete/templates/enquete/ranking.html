@@ -1,0 +1,18 @@
+{% extends "enquete/base.html" %}
+{% block content %}
+<h1>Ranking das mais votadas</h1>
+{% if object_list %}
+    <ul class="list-group list-group-flush">
+    
+    {% for questoes in object_list %}
+        <li class="list-group-item lead">
+            {{ questoes.pergunta }}
+        </li>
+
+    {% endfor %}
+    </ul>
+
+{% else %}
+    <p>Nao tem questoes salvas</p>
+{% endif %}
+{% endblock %}

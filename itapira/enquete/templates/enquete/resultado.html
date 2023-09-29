@@ -2,12 +2,17 @@
 {% block content %}
 <h1> {{ questao.pergunta }}</h1>
 
-<ul>
+<ul class ="list-group list-group-flush">
 {% for respostas in questao.resposta_set.all %}
-    <li>{{ respostas.resposta }} -- {{ respostas.votos }}
-    voto{{  respostas.votos|pluralize }}</li>
+    <li class="list-group-item lead">
+        {{ respostas.resposta }}
+        <span class ="badge bg-primary rounded-pill">
+            {{ respostas.votos }} voto{{  respostas.votos|pluralize }}
+        </span>
+    </li>
 {% endfor%}
 </ul>
-
-<a href="{% url 'detalhe' questao.id%}"> Votar Novamente?</a>
+<div class="mb-3">
+    <a class="btn btn-secondary" href="{% url 'detalhe' questao.id%}"> Votar Novamente?</a>
+</div>
 {% endblock %}
